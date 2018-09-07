@@ -282,7 +282,8 @@ class CMSFormMixin(models.AbstractModel):
         # NOTE: make sure to use `v.get` because sometimes (like for res.users)
         # you can get auto-generated fields here (like `in_group_XX`)
         # whereas some core fields attributes are missing.
-        _all_fields = {k: v for k, v in _all_fields.items() if v.get('store')}
+        # HHG: Removed - Related fields doesn't have store attribute
+        #_all_fields = {k: v for k, v in _all_fields.items() if v.get('store')}
         # update fields order
         if self._form_fields_order:
             _sorted_all_fields = OrderedDict()
