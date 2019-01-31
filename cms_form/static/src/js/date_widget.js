@@ -39,7 +39,18 @@ odoo.define('cms_form.date_widget', function (require) {
     },
     setup_datepicker: function() {
       var self = this;
-      if (!this.$el.attr('placeholder')) {
+      var placeholder = this.$el.attr('placeholder');
+      // placeholder empty: set default via lang format
+      // plahoholder not defined: leave it not set
+      if (!placeholder && !_.isUndefined(placeholder)) {
+        /* TODO: we should make this translatable. Example:
+
+        lang format in French is `DD.MM.YYYY`
+        what the user wants to see is `JJ.MM.AAAA`
+
+        As workaround you can define the placeholder as widget attribute
+        and translate it.
+        */
         this.$el.attr('placeholder', time_utils.getLangDateFormat());
       }
       // init bootstrap-datetimepicker
