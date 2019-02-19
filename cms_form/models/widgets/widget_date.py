@@ -33,3 +33,8 @@ class DateWidget(models.AbstractModel):
 
     def form_to_date(self, value, **req_values):
         return utils.safe_to_date(value)
+
+class DateTimeWidget(models.AbstractModel):
+    _name = 'cms.form.widget.datetime'
+    _inherit = 'cms.form.widget.date'
+    _w_template = 'cms_form.field_widget_datetime'
